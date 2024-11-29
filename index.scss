@@ -6,7 +6,7 @@
     padding: 0;
 }
 
-body {
+main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,14 +45,41 @@ body {
     }
 }
 
+.flex {
+    display: flex;
+}
+
+.none {
+    display: none;
+}
+
+.newGame {
+    display: none;
+    z-index: 100000;
+}
+
+.modal {
+    color: black;
+    flex-direction: column;
+    width: 500px;
+    height: 300px;
+    background-color: white;
+}
+
+.gameOver {
+    background-color: rgba(0, 0, 0, 1);
+}
+
 .goodborder {
     border: 10px solid lime;
+    animation: pulse 1s 2 forwards;
 }
 
 .badborder {
     border: 10px solid red;
-    animation: pulse 1s forwards;
+    animation: pulse 1s 2 forwards;
 }
+
 
 @keyframes pulse {
     0% {

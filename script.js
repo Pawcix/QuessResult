@@ -7,10 +7,26 @@ const good = document.querySelector('.good')
 const bad = document.querySelector('.bad')
 const goodAnswer = document.querySelector('.goodAnswers');
 const lev = document.querySelector('.lev');
+const live = document.querySelector('.live')
+const game = document.querySelector('.game')
+const newGame = document.querySelector('.newGame')
+const start = document.querySelector('.start')
 
 let x, y, v
 let answers = 0;
+let heart = 3;
 const sign = ['+', '-', '*', '/']
+
+const startNewGame = () => {
+    window.location.reload();
+}
+
+const gameOver = () => {
+    if (heart === 0) {
+        newGame.classList = 'flex'
+        game.classList = 'none';
+    }
+}
 
 const checkLevels = () => {
     if (answers <= 10) {
@@ -48,8 +64,8 @@ const generateQuestion = () => {
 
     numOne.innerHTML = x;
     numTwo.innerHTML = y;
-    numThree.innerHTML = v;
     input.value = '';
+    live.innerHTML = "Ilość żyć: " + heart;
 }
 
 const checkAnswer = () => {
@@ -60,13 +76,27 @@ const checkAnswer = () => {
         goodAnswer.innerHTML = "Poprawne odpowiedzi: " + answers;
         good.style.display = 'flex'
         bad.style.display = 'none'
-        input.classList = 'goodborder'
+        input.classList.add('goodborder');
         checkLevels();
         generateQuestion();
+
+        setTimeout(() => {
+            input.classList.remove('goodborder'),
+                good.style.display = 'none'
+        }, 2000)
     } else {
+        heart--;
+        input.value = '';
+        live.innerHTML = "Ilość żyć: " + heart;
         good.style.display = 'none'
         bad.style.display = 'flex'
-        input.classList = "badborder"
+        input.classList.add('badborder');
+        gameOver();
+
+        setTimeout(() => {
+            input.classList.remove('badborder'),
+                bad.style.display = 'none'
+        }, 2000)
     }
 }
 
@@ -77,6 +107,6 @@ const checkEnter = (event) => {
 }
 
 generateQuestion();
-
+start.addEventListener('click', startNewGame);
 button.addEventListener('click', checkAnswer);
 input.addEventListener('keypress', checkEnter);

@@ -9,21 +9,33 @@
 </head>
 
 <body>
-    <span class="lev"></span>
+    <main class="newGame">
+        <div class="modal">
+            <p>Game Over</p>
+            <p class="goodAnswers"></p>
+            <button class="start">Zacznij jeszcze raz</button>
+        </div>
+    </main>
 
-    <div>
-        <span class="numOne"></span> + <span class="numTwo"></span> = <span class="numThree"></span>
+    <main class="game">
+        <span class="lev"></span>
 
-    </div>
-    <input type="text" id="input">
-    <button id="button">Sprawdź</button>
+        <div>
+            <span class="numOne"></span> + <span class="numTwo"></span> = <span class="numThree"></span>
 
-    <span class="goodAnswers"></span>
+        </div>
+        <input type="text" id="input">
+        <button id="button">Sprawdź</button>
 
-    <div class="box">
-        <span class="answers good">Dobra Odpowiedź</span>
-        <span class="answers bad">Zła Odpowiedź</span>
-    </div>
+        <span class="goodAnswers"></span>
+
+        <div class="box">
+            <span class="answers good">Dobra Odpowiedź</span>
+            <span class="answers bad">Zła Odpowiedź</span>
+        </div>
+
+        <span class="live"></span>
+    </main>
 
     <script src="./script.js"></script>
 </body>
