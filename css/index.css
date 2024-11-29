@@ -6,49 +6,82 @@
   padding: 0;
 }
 
-main {
+body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin: 0;
   height: 100vh;
-  color: white;
-  font-size: 50px;
-  background-color: #333;
+  background-image: url("/img/bgc.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
 }
-main div {
+
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-width: 700px;
+  margin: 20px auto;
+  padding: 40px;
+  color: #333;
+  font-size: 50px;
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.game:hover {
+  transform: scale(1.01);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+.game #level {
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+.game div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-main input {
-  padding: 10px;
-  font-size: 50px;
-}
-main .box {
-  margin-top: 20px;
+.game input {
+  padding: 15px;
   font-size: 30px;
-  flex-direction: column;
+  border-radius: 10px;
+  margin: 20px 0;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 120, 212, 0.2);
 }
-main .box .good {
+.game .box {
+  margin-top: 30px;
+  font-size: 25px;
+  flex-direction: column;
+  text-align: center;
+}
+.game .box .good {
   display: none;
   color: lime;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease;
 }
-main .box .bad {
+.game .box .bad {
   display: none;
   color: tomato;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease;
 }
 
-.flex {
-  display: flex;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
-.none {
-  display: none;
-}
-
-.newGame {
+.gameOver {
   display: none;
   z-index: 100000;
 }
@@ -65,12 +98,20 @@ main .box .bad {
   background-color: rgb(0, 0, 0);
 }
 
-.goodborder {
+.flex {
+  display: flex;
+}
+
+.none {
+  display: none;
+}
+
+.good-border {
   border: 10px solid lime;
   animation: pulse 1s 2 forwards;
 }
 
-.badborder {
+.bad-border {
   border: 10px solid red;
   animation: pulse 1s 2 forwards;
 }

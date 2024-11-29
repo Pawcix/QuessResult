@@ -6,16 +6,42 @@
     padding: 0;
 }
 
-main {
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/img/bgc.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.game {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 0;
-    height: 100vh;
-    color: white;
+    min-width: 700px;
+    margin: 20px auto;
+    padding: 40px;
+    color: #333;
     font-size: 50px;
-    background-color: #333;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: scale(1.01);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    #level {
+        font-weight: bold;
+        padding-bottom: 20px;
+    }
 
     div {
         display: flex;
@@ -24,36 +50,49 @@ main {
     }
 
     input {
-        padding: 10px;
-        font-size: 50px;
+        padding: 15px;
+        font-size: 30px;
+        border-radius: 10px;
+        margin: 20px 0;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 10px rgba(0, 120, 212, 0.2);
     }
 
     .box {
-        margin-top: 20px;
-        font-size: 30px;
+        margin-top: 30px;
+        font-size: 25px;
         flex-direction: column;
+        text-align: center;
 
         .good {
             display: none;
             color: lime;
+            font-weight: bold;
+            animation: fadeIn 0.5s ease;
         }
 
         .bad {
             display: none;
-            color: tomato
+            color: tomato;
+            font-weight: bold;
+            animation: fadeIn 0.5s ease;
         }
     }
 }
 
-.flex {
-    display: flex;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-.none {
-    display: none;
-}
 
-.newGame {
+
+.gameOver {
     display: none;
     z-index: 100000;
 }
@@ -70,16 +109,25 @@ main {
     background-color: rgba(0, 0, 0, 1);
 }
 
-.goodborder {
+
+// Style for JS:
+.flex {
+    display: flex;
+}
+
+.none {
+    display: none;
+}
+
+.good-border {
     border: 10px solid lime;
     animation: pulse 1s 2 forwards;
 }
 
-.badborder {
+.bad-border {
     border: 10px solid red;
     animation: pulse 1s 2 forwards;
 }
-
 
 @keyframes pulse {
     0% {

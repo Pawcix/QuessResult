@@ -1,44 +1,43 @@
-const numOne = document.querySelector('.numOne');
-const numTwo = document.querySelector('.numTwo');
-const numThree = document.querySelector('.numThree')
-const input = document.querySelector('#input')
-const button = document.querySelector('#button')
-const good = document.querySelector('.good')
-const bad = document.querySelector('.bad')
-const goodAnswer = document.querySelector('.goodAnswers');
-const lev = document.querySelector('.lev');
-const live = document.querySelector('.live')
-const game = document.querySelector('.game')
-const newGame = document.querySelector('.newGame')
-const start = document.querySelector('.start')
+const game = document.querySelector('#game')
+const numOne = document.querySelector('#numOne');
+const numTwo = document.querySelector('#numTwo');
+const inputValue = document.querySelector('#inputValue')
+const checkButton = document.querySelector('#checkButton')
+const goodAnswersCounter = document.querySelector('#goodAnswersCounter')
+const goodAnswersCounterInGameOver = document.querySelector('#goodAnswersCounterInGameOver')
+const goodAnswers = document.querySelector('#goodAnswers')
+const badAnswers = document.querySelector('#badAnswers')
+const level = document.querySelector('#level')
+const liveHeart = document.querySelector('#liveHeart')
+const gameOver = document.querySelector('#gameOver')
+const startGame = document.querySelector('#startGame')
 
 let x, y, v
 let answers = 0;
 let heart = 3;
-const sign = ['+', '-', '*', '/']
 
 const startNewGame = () => {
     window.location.reload();
 }
 
-const gameOver = () => {
+const gameOverModal = () => {
     if (heart === 0) {
-        newGame.classList = 'flex'
+        gameOver.classList = 'flex'
         game.classList = 'none';
     }
 }
 
 const checkLevels = () => {
     if (answers <= 10) {
-        lev.innerHTML = 'Level: 1';
+        level.innerHTML = 'Level: 1';
     } else if (answers <= 20) {
-        lev.innerHTML = 'Level: 2';
+        level.innerHTML = 'Level: 2';
     } else if (answers <= 30) {
-        lev.innerHTML = 'Level: 3';
+        level.innerHTML = 'Level: 3';
     } else if (answers <= 40) {
-        lev.innerHTML = 'Level: 4';
+        level.innerHTML = 'Level: 4';
     } else {
-        lev.innerHTML = 'Level: 5';
+        level.innerHTML = 'Level: 5';
     }
 }
 
@@ -64,49 +63,50 @@ const generateQuestion = () => {
 
     numOne.innerHTML = x;
     numTwo.innerHTML = y;
-    input.value = '';
-    live.innerHTML = "Ilość żyć: " + heart;
+    inputValue.value = '';
+    liveHeart.innerHTML = "Live: " + heart;
 }
 
-const checkAnswer = () => {
-    const userInput = parseInt(input.value, 10)
+const checkAnswers = () => {
+    const userInput = parseInt(inputValue.value, 10)
 
     if (userInput === v) {
         answers++;
-        goodAnswer.innerHTML = "Poprawne odpowiedzi: " + answers;
-        good.style.display = 'flex'
-        bad.style.display = 'none'
-        input.classList.add('goodborder');
+        goodAnswersCounter.innerHTML = "Correct Answers: " + answers;
+        goodAnswersCounterInGameOver.innerHTML = "Correct Answers: " + answers;
+        goodAnswers.style.display = 'flex'
+        badAnswers.style.display = 'none'
+        inputValue.classList.add('good-border');
         checkLevels();
         generateQuestion();
 
         setTimeout(() => {
-            input.classList.remove('goodborder'),
-                good.style.display = 'none'
+            inputValue.classList.remove('good-border'),
+                goodAnswers.style.display = 'none'
         }, 2000)
     } else {
         heart--;
-        input.value = '';
-        live.innerHTML = "Ilość żyć: " + heart;
-        good.style.display = 'none'
-        bad.style.display = 'flex'
-        input.classList.add('badborder');
-        gameOver();
+        inputValue.value = '';
+        liveHeart.innerHTML = "Live: " + heart;
+        goodAnswers.style.display = 'none'
+        badAnswers.style.display = 'flex'
+        inputValue.classList.add('bad-border');
+        gameOverModal();
 
         setTimeout(() => {
-            input.classList.remove('badborder'),
-                bad.style.display = 'none'
+            inputValue.classList.remove('bad-border'),
+                badAnswers.style.display = 'none'
         }, 2000)
     }
 }
 
 const checkEnter = (event) => {
     if (event.key === "Enter") {
-        checkAnswer();
+        checkAnswers();
     }
 }
 
 generateQuestion();
-start.addEventListener('click', startNewGame);
-button.addEventListener('click', checkAnswer);
-input.addEventListener('keypress', checkEnter);
+startGame.addEventListener('click', startNewGame);
+checkButton.addEventListener('click', checkAnswers);
+inputValue.addEventListener('keypress', checkEnter);

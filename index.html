@@ -4,38 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Paweł Szatanik">
     <title>Quess Result</title>
     <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
-    <main class="newGame">
+    <main id="gameOver" class="gameOver">
         <div class="modal">
             <p>Game Over</p>
-            <p class="goodAnswers"></p>
-            <button class="start">Zacznij jeszcze raz</button>
+            <p id="goodAnswersCounterInGameOver"></p>
+            <button id="startGame" class="start">Zacznij jeszcze raz</button>
         </div>
     </main>
 
-    <main class="game">
-        <span class="lev"></span>
-
+    <section id="game" class="game">
+        <span id="level"></span>
+        
         <div>
-            <span class="numOne"></span> + <span class="numTwo"></span> = <span class="numThree"></span>
-
+            <span id="numOne"></span> + <span id="numTwo"></span>
         </div>
-        <input type="text" id="input">
-        <button id="button">Sprawdź</button>
 
-        <span class="goodAnswers"></span>
+        <input id="inputValue" type="text">
+
+        <button id="checkButton">Sprawdź</button>
+
+        <span id="goodAnswersCounter"></span>
 
         <div class="box">
-            <span class="answers good">Dobra Odpowiedź</span>
-            <span class="answers bad">Zła Odpowiedź</span>
+            <span id="goodAnswers" class="answers good">Dobra Odpowiedź</span>
+            <span id="badAnswers" class="answers bad">Zła Odpowiedź</span>
         </div>
 
-        <span class="live"></span>
-    </main>
+        <span id="liveHeart" class="live"></span>
+    </section>
 
     <script src="./script.js"></script>
 </body>
