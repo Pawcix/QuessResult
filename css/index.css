@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+  height: 100vh;
+  color: white;
+  font-size: 50px;
+  background-color: #333;
+}
+body div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body input {
+  padding: 10px;
+  font-size: 50px;
+}
+body .box {
+  margin-top: 20px;
+  font-size: 30px;
+  flex-direction: column;
+}
+body .box .good {
+  display: none;
+  color: lime;
+}
+body .box .bad {
+  display: none;
+  color: tomato;
+}
+
+.goodborder {
+  border: 10px solid lime;
+}
+
+.badborder {
+  border: 10px solid red;
+  animation: pulse 1s forwards;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}/*# sourceMappingURL=index.css.map */
