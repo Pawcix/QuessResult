@@ -22,22 +22,8 @@ const startNewGame = () => {
 
 const gameOverModal = () => {
     if (heart === 0) {
-        gameOver.classList = 'flex'
-        game.classList = 'none';
-    }
-}
-
-const checkLevels = () => {
-    if (answers <= 10) {
-        level.innerHTML = 'Level: 1';
-    } else if (answers <= 20) {
-        level.innerHTML = 'Level: 2';
-    } else if (answers <= 30) {
-        level.innerHTML = 'Level: 3';
-    } else if (answers <= 40) {
-        level.innerHTML = 'Level: 4';
-    } else {
-        level.innerHTML = 'Level: 5';
+        gameOver.classList.add('flex')
+        game.classList.add('none')
     }
 }
 
@@ -45,18 +31,23 @@ const generateQuestion = () => {
     if (answers <= 10) {
         x = Math.floor(Math.random() * 11);
         y = Math.floor(Math.random() * 11);
+        level.innerHTML = 'Level: 1';
     } else if (answers <= 20) {
         x = Math.floor(Math.random() * 21) + 10;
         y = Math.floor(Math.random() * 21) + 10;
+        level.innerHTML = 'Level: 2';
     } else if (answers <= 30) {
         x = Math.floor(Math.random() * 31) + 20;
         y = Math.floor(Math.random() * 31) + 20;
+        level.innerHTML = 'Level: 3';
     } else if (answers <= 40) {
         x = Math.floor(Math.random() * 41) + 30;
         y = Math.floor(Math.random() * 41) + 30;
+        level.innerHTML = 'Level: 4';
     } else {
         x = Math.floor(Math.random() * 51) + 40;
         y = Math.floor(Math.random() * 51) + 40;
+        level.innerHTML = 'Level: 5';
     }
 
     v = x + y;
@@ -77,7 +68,6 @@ const checkAnswers = () => {
         goodAnswers.style.display = 'flex'
         badAnswers.style.display = 'none'
         inputValue.classList.add('good-border');
-        checkLevels();
         generateQuestion();
 
         setTimeout(() => {

@@ -10,33 +10,37 @@
 </head>
 
 <body>
-    <main id="gameOver" class="gameOver">
-        <div class="modal">
-            <p>Game Over</p>
+    <section id="gameOver">
+        <div class="gameOver">
+            <h2>Game Over :C</h2>
             <p id="goodAnswersCounterInGameOver"></p>
-            <button id="startGame" class="start">Zacznij jeszcze raz</button>
+            <button id="startGame">Try Again</button>
         </div>
-    </main>
+    </section>
 
-    <section id="game" class="game">
-        <span id="level"></span>
-        
-        <div>
+    <section id="game">
+        <div class="info">
+            <span id="level"></span>
+            <span id="liveHeart"></span>
+        </div>
+
+        <div class="answers">
+            <span id="goodAnswers">Good</span>
+            <span id="badAnswers">Bad</span>
+        </div>
+
+        <div class="numbers">
             <span id="numOne"></span> + <span id="numTwo"></span>
         </div>
 
-        <input id="inputValue" type="text">
-
-        <button id="checkButton">Sprawdź</button>
-
-        <span id="goodAnswersCounter"></span>
-
-        <div class="box">
-            <span id="goodAnswers" class="answers good">Dobra Odpowiedź</span>
-            <span id="badAnswers" class="answers bad">Zła Odpowiedź</span>
+        <div class="counter">
+            <div id="goodAnswersCounter"></div>
         </div>
 
-        <span id="liveHeart" class="live"></span>
+        <div class="check">
+            <input id="inputValue" type="text">
+            <button id="checkButton">Check</button>
+        </div>
     </section>
 
     <script src="./script.js"></script>
