@@ -26,7 +26,7 @@ section {
     font-size: 50px;
     border-radius: 20px;
     background-color: #ffffff;
-    animation: displayMainBox 3s forwards ease-in-out;
+    // animation: displayMainBox 3s forwards ease-in-out;
 
     div {
         display: flex;
@@ -168,7 +168,7 @@ button {
     }
 
     100% {
-        transform: scale(1) rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+        transform: scale(1.5) rotateX(360deg) rotateY(360deg) rotateZ(360deg);
         background-color: rgb(210, 210, 210);
         box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
     }

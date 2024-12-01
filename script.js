@@ -11,10 +11,19 @@ const level = document.querySelector('#level')
 const liveHeart = document.querySelector('#liveHeart')
 const gameOver = document.querySelector('#gameOver')
 const startGame = document.querySelector('#startGame')
+const timer = document.querySelector('#timer')
 
 let x, y, v
 let answers = 0;
 let heart = 3;
+let second = 0;
+
+const displayCounter = () => {
+    second++;
+    if (timer) {
+        timer.innerHTML = 'Time: ' + second + 's';
+    }
+}
 
 const startNewGame = () => {
     window.location.reload();
@@ -31,23 +40,34 @@ const generateQuestion = () => {
     if (answers <= 10) {
         x = Math.floor(Math.random() * 11);
         y = Math.floor(Math.random() * 11);
-        level.innerHTML = 'Level: 1';
+        level.innerHTML = '🐳 Level: 1';
+        level.style.color = 'blue';
     } else if (answers <= 20) {
         x = Math.floor(Math.random() * 21) + 10;
         y = Math.floor(Math.random() * 21) + 10;
-        level.innerHTML = 'Level: 2';
+        level.innerHTML = '🐸 Level: 2';
+        level.style.color = 'green';
     } else if (answers <= 30) {
         x = Math.floor(Math.random() * 31) + 20;
         y = Math.floor(Math.random() * 31) + 20;
-        level.innerHTML = 'Level: 3';
+        level.innerHTML = '🐱 Level: 3';
+        level.style.color = 'gold';
     } else if (answers <= 40) {
         x = Math.floor(Math.random() * 41) + 30;
         y = Math.floor(Math.random() * 41) + 30;
-        level.innerHTML = 'Level: 4';
+        level.innerHTML = '🦊 Level: 4';
+        level.style.color = 'orange';
     } else {
         x = Math.floor(Math.random() * 51) + 40;
         y = Math.floor(Math.random() * 51) + 40;
-        level.innerHTML = 'Level: 5';
+        level.innerHTML = '🐙 Level: 5';
+        level.style.color = 'red'
+    }
+
+    if (answers === 1) {
+        setInterval(function () {
+            displayCounter();
+        }, 1000)
     }
 
     v = x + y;
