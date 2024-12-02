@@ -91,6 +91,18 @@ section .gameOver {
   flex-direction: column;
 }
 
+.tip {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  transform: translateY(-150px);
+  animation: tipHide 1s 3s forwards ease-out;
+}
+.tip :nth-child(1) {
+  font-weight: bold;
+  font-size: 30px;
+}
+
 #gameOver {
   display: none;
 }
@@ -128,6 +140,26 @@ button {
   animation: pulse 1s 2 forwards;
 }
 
+.active {
+  color: lime;
+  background-color: rgba(0, 255, 0, 0.2);
+  border: 5px solid lime;
+}
+
+.deactivate {
+  color: tomato;
+  background-color: rgba(255, 99, 71, 0.2);
+  border: 5px solid tomato;
+}
+
+@keyframes tipHide {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -151,8 +183,8 @@ button {
     background-color: white;
   }
   100% {
-    transform: scale(1.5) rotateX(360deg) rotateY(360deg) rotateZ(360deg);
-    background-color: rgb(210, 210, 210);
+    transform: scale(1.25) rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    background-color: rgb(255, 255, 255);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
   }
 }/*# sourceMappingURL=index.css.map */

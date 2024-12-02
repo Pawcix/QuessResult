@@ -1,8 +1,10 @@
 const game = document.querySelector('#game')
 const numOne = document.querySelector('#numOne');
 const numTwo = document.querySelector('#numTwo');
+const numThree = document.querySelector('#numThree');
 const inputValue = document.querySelector('#inputValue')
 const checkButton = document.querySelector('#checkButton')
+const tipButton = document.querySelector('#tipButton')
 const goodAnswersCounter = document.querySelector('#goodAnswersCounter')
 const goodAnswersCounterInGameOver = document.querySelector('#goodAnswersCounterInGameOver')
 const goodAnswers = document.querySelector('#goodAnswers')
@@ -17,6 +19,7 @@ let x, y, v
 let answers = 0;
 let heart = 3;
 let second = 0;
+let isActive = false;
 
 const displayCounter = () => {
   second++;
@@ -74,8 +77,24 @@ const generateQuestion = () => {
 
   numOne.innerHTML = x;
   numTwo.innerHTML = y;
+  numThree.innerHTML = '';
   inputValue.value = '';
   liveHeart.innerHTML = "Live: " + heart;
+
+  tipButton.addEventListener('click', function () {
+    if (v) {
+      isActive = true
+      tipButton.innerHTML = v;
+      tipButton.classList.add('active');
+
+      setTimeout(function () {
+        numThree.innerHTML = '';
+        isActive = false
+        tipButton.innerHTML = ":|"
+        tipButton.classList.add('deactivate');
+      }, 1000);
+    }
+  }, { once: true });
 }
 
 const checkAnswers = () => {
@@ -88,6 +107,8 @@ const checkAnswers = () => {
     goodAnswers.style.display = 'flex'
     badAnswers.style.display = 'none'
     inputValue.classList.add('good-border');
+    tipButton.innerHTML = "Tip";
+    tipButton.classList.remove('active', 'deactivate');
     generateQuestion();
 
     setTimeout(() => {
