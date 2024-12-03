@@ -91,16 +91,25 @@ section .gameOver {
   flex-direction: column;
 }
 
-.tip {
+.tip,
+.music {
   position: absolute;
   top: 25px;
-  left: 25px;
   transform: translateY(-150px);
   animation: tipHide 1s 3s forwards ease-out;
 }
-.tip :nth-child(1) {
+.tip :nth-child(1),
+.music :nth-child(1) {
   font-weight: bold;
   font-size: 30px;
+}
+
+.tip {
+  left: 25px;
+}
+
+.music {
+  left: 135px;
 }
 
 #gameOver {

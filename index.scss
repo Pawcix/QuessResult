@@ -109,10 +109,10 @@ section {
     }
 }
 
-.tip {
+.tip,
+.music {
     position: absolute;
     top: 25px;
-    left: 25px;
     transform: translateY(-150px);
     animation: tipHide 1s 3s forwards ease-out;
 
@@ -120,6 +120,14 @@ section {
         font-weight: bold;
         font-size: 30px;
     }
+}
+
+.tip {
+    left: 25px;
+}
+
+.music {
+    left: 135px;
 }
 
 #gameOver {

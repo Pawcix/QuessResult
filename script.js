@@ -1,3 +1,20 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const muteButton = document.querySelector('#muteButton')
+  const music = new Audio('./music.mp3');
+  music.play();
+  music.volume = 0.5;
+
+  muteButton.addEventListener('click', () => {
+    if (music.muted) {
+      music.muted = false;
+      muteButton.textContent = '🔊';
+    } else {
+      music.muted = true;
+      muteButton.textContent = '🔇';
+    }
+  });
+});
+
 const game = document.querySelector('#game')
 const numOne = document.querySelector('#numOne');
 const numTwo = document.querySelector('#numTwo');
@@ -14,6 +31,7 @@ const liveHeart = document.querySelector('#liveHeart')
 const gameOver = document.querySelector('#gameOver')
 const startGame = document.querySelector('#startGame')
 const timer = document.querySelector('#timer')
+
 
 let x, y, v
 let answers = 0;
@@ -99,7 +117,7 @@ const generateQuestion = () => {
 
 const checkAnswers = () => {
   const userInput = parseInt(inputValue.value, 10)
-
+  // music.play();
   if (userInput === v) {
     answers++;
     goodAnswersCounter.innerHTML = "Correct Answers: " + answers;
