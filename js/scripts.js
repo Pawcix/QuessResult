@@ -1,20 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const muteButton = document.querySelector('#muteButton')
-  const music = new Audio('./music.mp3');
-  music.play();
-  music.volume = 0.5;
-
-  muteButton.addEventListener('click', () => {
-    if (music.muted) {
-      music.muted = false;
-      muteButton.textContent = '🔊';
-    } else {
-      music.muted = true;
-      muteButton.textContent = '🔇';
-    }
-  });
-});
-
 const game = document.querySelector('#game')
 const numOne = document.querySelector('#numOne');
 const numTwo = document.querySelector('#numTwo');
@@ -31,7 +14,6 @@ const liveHeart = document.querySelector('#liveHeart')
 const gameOver = document.querySelector('#gameOver')
 const startGame = document.querySelector('#startGame')
 const timer = document.querySelector('#timer')
-
 
 let x, y, v
 let answers = 0;
@@ -54,6 +36,8 @@ const gameOverModal = () => {
   if (heart === 0) {
     gameOver.classList.add('flex')
     game.classList.add('none')
+
+    gameOver_SFX.play();
   }
 }
 
@@ -64,23 +48,23 @@ const generateQuestion = () => {
     level.innerHTML = '🐳 Level: 1';
     level.style.color = 'blue';
   } else if (answers <= 20) {
-    x = Math.floor(Math.random() * 21) + 10;
-    y = Math.floor(Math.random() * 21) + 10;
+    x = Math.floor(Math.random() * 16) + 5;
+    y = Math.floor(Math.random() * 16) + 5;
     level.innerHTML = '🐸 Level: 2';
     level.style.color = 'green';
   } else if (answers <= 30) {
-    x = Math.floor(Math.random() * 31) + 20;
-    y = Math.floor(Math.random() * 31) + 20;
+    x = Math.floor(Math.random() * 21) + 10;
+    y = Math.floor(Math.random() * 21) + 10;
     level.innerHTML = '🐱 Level: 3';
     level.style.color = 'gold';
   } else if (answers <= 40) {
-    x = Math.floor(Math.random() * 41) + 30;
-    y = Math.floor(Math.random() * 41) + 30;
+    x = Math.floor(Math.random() * 26) + 15;
+    y = Math.floor(Math.random() * 26) + 15;
     level.innerHTML = '🦊 Level: 4';
     level.style.color = 'orange';
   } else {
-    x = Math.floor(Math.random() * 51) + 40;
-    y = Math.floor(Math.random() * 51) + 40;
+    x = Math.floor(Math.random() * 31) + 20;
+    y = Math.floor(Math.random() * 31) + 20;
     level.innerHTML = '🐙 Level: 5';
     level.style.color = 'red'
   }
@@ -92,7 +76,6 @@ const generateQuestion = () => {
   }
 
   v = x + y;
-
   numOne.innerHTML = x;
   numTwo.innerHTML = y;
   numThree.innerHTML = '';
@@ -117,9 +100,10 @@ const generateQuestion = () => {
 
 const checkAnswers = () => {
   const userInput = parseInt(inputValue.value, 10)
-  // music.play();
+
   if (userInput === v) {
     answers++;
+
     goodAnswersCounter.innerHTML = "Correct Answers: " + answers;
     goodAnswersCounterInGameOver.innerHTML = "Correct Answers: " + answers;
     goodAnswers.style.display = 'flex'
@@ -127,6 +111,8 @@ const checkAnswers = () => {
     inputValue.classList.add('good-border');
     tipButton.innerHTML = "Tip";
     tipButton.classList.remove('active', 'deactivate');
+    answerGood_SFX.currentTime = 0;
+    answerGood_SFX.play();
     generateQuestion();
 
     setTimeout(() => {
@@ -140,6 +126,8 @@ const checkAnswers = () => {
     goodAnswers.style.display = 'none'
     badAnswers.style.display = 'flex'
     inputValue.classList.add('bad-border');
+    answerBad_SFX.currentTime = 0;
+    answerBad_SFX.play();
     gameOverModal();
 
     setTimeout(() => {

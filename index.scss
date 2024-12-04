@@ -110,7 +110,8 @@ section {
 }
 
 .tip,
-.music {
+.music,
+.themeSFX {
     position: absolute;
     top: 25px;
     transform: translateY(-150px);
@@ -123,11 +124,15 @@ section {
 }
 
 .tip {
-    left: 25px;
+    right: 25px;
 }
 
 .music {
-    left: 135px;
+    left: 25px;
+}
+
+.themeSFX {
+    left: 110px;
 }
 
 #gameOver {
@@ -143,7 +148,7 @@ section {
 
 button {
     height: 100%;
-    padding: 25px;
+    padding: 15px;
     border-radius: 15px;
     background-color: #fff;
     cursor: pointer;
