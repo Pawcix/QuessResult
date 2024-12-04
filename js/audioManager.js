@@ -38,5 +38,3 @@ themeSFX.addEventListener('click', () => {
         themeSFX.textContent = '🔇';
     }
 });
-
-

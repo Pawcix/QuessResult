@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Poppins", serif;
     overflow: hidden;
 }
 
@@ -26,7 +26,7 @@ section {
     font-size: 50px;
     border-radius: 20px;
     animation: displayMainBox 3s forwards ease-in-out;
-    z-index: 100;
+    z-index: 1;
 
     div {
         display: flex;
@@ -116,6 +116,7 @@ section {
     top: 25px;
     transform: translateY(-150px);
     animation: tipHide 1s 3s forwards ease-out;
+    z-index: 1;
 
     :nth-child(1) {
         font-weight: bold;
@@ -184,6 +185,13 @@ button {
     background-color: rgba(255, 99, 71, .2);
     border: 5px solid tomato;
 }
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    z-index: 1;
+}
+
 
 @keyframes tipHide {
     0% {

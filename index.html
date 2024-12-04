@@ -9,19 +9,14 @@
     <link rel="stylesheet" href="./css/index.css">
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <div id="particles-js"></div>
-
-    <section id="gameOver">
-        <div class="gameOver">
-            <h2>Game Over :C</h2>
-            <p id="goodAnswersCounterInGameOver"></p>
-            <button id="startGame">Try Again</button>
-        </div>
-    </section>
-
     <section id="game">
         <div class="info">
             <span id="level"></span>
@@ -51,6 +46,14 @@
         </div>
     </section>
 
+    <section id="gameOver">
+        <div class="gameOver">
+            <h2>Game Over :C</h2>
+            <p id="goodAnswersCounterInGameOver"></p>
+            <button id="startGame">Try Again</button>
+        </div>
+    </section>
+
     <div class="tip">
         <button id="tipButton">Tip</button>
         <span id="numThree"></span>
@@ -64,8 +67,16 @@
         <button id="themeSFX">🔊</button>
     </div>
 
+    <div id="particles-js"></div>
+
+    <footer>
+        <p>Created by: Paweł Szatanik | &copy <span id="year"></span> | All right reserved.</p>
+    </footer>
+
     <script src="js/scripts.js"></script>
     <script src="js/audioManager.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/year.js"></script>
 </body>
 
 </html>

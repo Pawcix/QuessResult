@@ -103,7 +103,6 @@ const checkAnswers = () => {
 
   if (userInput === v) {
     answers++;
-
     goodAnswersCounter.innerHTML = "Correct Answers: " + answers;
     goodAnswersCounterInGameOver.innerHTML = "Correct Answers: " + answers;
     goodAnswers.style.display = 'flex'
@@ -147,7 +146,3 @@ generateQuestion();
 startGame.addEventListener('click', startNewGame);
 checkButton.addEventListener('click', checkAnswers);
 inputValue.addEventListener('keypress', checkEnter);
-
-particlesJS.load('particles-js', 'particles.json', function () {
-  console.log('Particles.js config loaded');
-});
