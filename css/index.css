@@ -15,6 +15,14 @@ body {
   overflow: hidden;
 }
 
+button {
+  height: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
 section {
   display: flex;
   justify-content: center;
@@ -92,6 +100,17 @@ section .gameOver {
   flex-direction: column;
 }
 
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  padding: 10px;
+  text-align: center;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 1;
+}
+
 .tip,
 .music,
 .themeSFX {
@@ -131,12 +150,12 @@ section .gameOver {
   height: 100vh;
 }
 
-button {
-  height: 100%;
-  padding: 15px;
-  border-radius: 15px;
-  background-color: #fff;
-  cursor: pointer;
+#levelUp {
+  position: absolute;
+  font-size: 400px;
+  animation: colorRotate 0.5s linear infinite, pulse 2s linear infinite;
+  transition: all 1s;
+  z-index: 2;
 }
 
 .flex {
@@ -181,17 +200,6 @@ button {
   border: 5px solid tomato;
 }
 
-footer {
-  position: absolute;
-  width: 100%;
-  bottom: 0px;
-  padding: 10px;
-  text-align: center;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(0, 0, 0, 0) 100%);
-  z-index: 1;
-}
-
 @keyframes tipHide {
   0% {
     transform: translateY(-100px);
@@ -226,5 +234,22 @@ footer {
     transform: scale(1.25) rotateX(360deg) rotateY(360deg) rotateZ(360deg);
     background-color: rgb(255, 255, 255);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+  }
+}
+@keyframes colorRotate {
+  from {
+    color: #6666ff;
+  }
+  10% {
+    color: #0099ff;
+  }
+  50% {
+    color: #00ff00;
+  }
+  75% {
+    color: #ff3399;
+  }
+  100% {
+    color: #6666ff;
   }
 }/*# sourceMappingURL=index.css.map */
