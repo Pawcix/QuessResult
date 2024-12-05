@@ -150,11 +150,23 @@ button {
 .good-border {
   border: 10px solid lime;
   animation: pulse 1s 2 forwards;
+  transition: all 0.2s;
 }
 
 .bad-border {
   border: 10px solid red;
   animation: pulse 1s 2 forwards;
+  transition: all 0.2s;
+}
+
+.good-shadow {
+  box-shadow: 0px 0px 75px lime !important;
+  transition: all 0.2s;
+}
+
+.bad-shadow {
+  box-shadow: 0px 0px 75px tomato !important;
+  transition: all 0.2s;
 }
 
 .active {

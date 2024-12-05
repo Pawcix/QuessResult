@@ -96,8 +96,9 @@ const checkAnswers = () => {
     answers++;
     goodAnswersCounter.innerHTML = "Correct Answers: " + answers;
     goodAnswersCounterInGameOver.innerHTML = "Correct Answers: " + answers;
-    goodAnswers.style.display = 'flex'
-    badAnswers.style.display = 'none'
+    goodAnswers.style.display = 'flex';
+    badAnswers.style.display = 'none';
+    game.classList.add('good-shadow');
     inputValue.classList.add('good-border');
     tipButton.innerHTML = "Tip";
     tipButton.classList.remove('active', 'deactivate');
@@ -107,14 +108,16 @@ const checkAnswers = () => {
 
     setTimeout(() => {
       inputValue.classList.remove('good-border'),
-        goodAnswers.style.display = 'none'
-    }, 2000)
+        goodAnswers.style.display = 'none',
+        game.classList.remove('good-shadow')
+    }, 1500)
   } else {
     heart--;
     inputValue.value = '';
     liveHeart.innerHTML = "Live: " + heart;
-    goodAnswers.style.display = 'none'
-    badAnswers.style.display = 'flex'
+    goodAnswers.style.display = 'none';
+    badAnswers.style.display = 'flex';
+    game.classList.add('bad-shadow');
     inputValue.classList.add('bad-border');
     answerBad_SFX.currentTime = 0;
     answerBad_SFX.play();
@@ -122,8 +125,9 @@ const checkAnswers = () => {
 
     setTimeout(() => {
       inputValue.classList.remove('bad-border'),
-        badAnswers.style.display = 'none'
-    }, 2000)
+        badAnswers.style.display = 'none',
+        game.classList.remove('bad-shadow')
+    }, 1500)
   }
 }
 
