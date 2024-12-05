@@ -31,6 +31,7 @@ section {
 section div {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: row;
   width: 100%;
   padding: 10px;
@@ -170,7 +171,12 @@ button {
 
 footer {
   position: absolute;
-  bottom: 10px;
+  width: 100%;
+  bottom: 0px;
+  padding: 10px;
+  text-align: center;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(0, 0, 0, 0) 100%);
   z-index: 1;
 }
 

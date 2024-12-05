@@ -13,20 +13,11 @@ const level = document.querySelector('#level')
 const liveHeart = document.querySelector('#liveHeart')
 const gameOver = document.querySelector('#gameOver')
 const startGame = document.querySelector('#startGame')
-const timer = document.querySelector('#timer')
 
 let x, y, v
 let answers = 0;
 let heart = 3;
-let second = 0;
 let isActive = false;
-
-const displayCounter = () => {
-  second++;
-  if (timer) {
-    timer.innerHTML = 'Time: ' + second + 's';
-  }
-}
 
 const startNewGame = () => {
   window.location.reload();
