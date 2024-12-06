@@ -27,21 +27,12 @@
             <span id="liveHeart"></span>
         </div>
 
-        <div class="answers">
-            <span id="goodAnswers">Good</span>
-            <span id="badAnswers">Bad</span>
-        </div>
-
         <div class="numbers">
             <span id="numOne"></span> + <span id="numTwo"></span>
         </div>
 
-        <div class="counter">
-            <div id="goodAnswersCounter">Ansers</div>
-        </div>
-
         <div class="check">
-            <input id="inputValue" type="text" >
+            <input id="inputValue" type="text">
             <button id="checkButton">Check</button>
         </div>
     </section>
@@ -54,21 +45,30 @@
         </div>
     </section>
 
-    <div id='timerBox'  class="timerBox">
+    <div id="answersBox" class="answersBox">
+        <h2 id="goodAnswers">Good</h2>
+        <h2 id="badAnswers">Bad</h2>
+    </div>
+
+    <div id="timerBox" class="timerBox">
         <h2 id="timer" class="timer">timer</h2>
     </div>
 
+    <div id="counterBox" class="counterBox">
+        <h2 id="goodAnswersCounter">Ansers</h2>
+    </div>
+
     <div class="tip">
-        <button id="tipButton">Tip</button>
+        <button id="tipButton" class="iconButton"><img src="./icons/bulb.svg"  alt="tip" class="icon"></button>
         <span id="numThree"></span>
     </div>
 
     <div class="music">
-        <button id="themeMusic">🔊</button>
+        <button id="themeMusic" class="iconButton"><img src="./icons/musicOn.svg" alt="music settings" class="icon"></button>
     </div>
 
     <div class="themeSFX">
-        <button id="themeSFX">🔊</button>
+        <button id="themeSFX" class="iconButton"><img src="./icons/sfxOn.svg" alt="sfx settings" class="icon"></button>
     </div>
 
     <span id="levelUp"></span>

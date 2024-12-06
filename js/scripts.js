@@ -2,20 +2,21 @@ const game = document.querySelector('#game')
 const numOne = document.querySelector('#numOne');
 const numTwo = document.querySelector('#numTwo');
 const numThree = document.querySelector('#numThree');
-const inputValue = document.querySelector('#inputValue')
-const checkButton = document.querySelector('#checkButton')
-const tipButton = document.querySelector('#tipButton')
-const goodAnswersCounter = document.querySelector('#goodAnswersCounter')
-const goodAnswersCounterInGameOver = document.querySelector('#goodAnswersCounterInGameOver')
-const goodAnswers = document.querySelector('#goodAnswers')
-const badAnswers = document.querySelector('#badAnswers')
-const level = document.querySelector('#level')
-const liveHeart = document.querySelector('#liveHeart')
-const gameOver = document.querySelector('#gameOver')
-const startGame = document.querySelector('#startGame')
+const inputValue = document.querySelector('#inputValue');
+const checkButton = document.querySelector('#checkButton');
+const tipButton = document.querySelector('#tipButton');
+const goodAnswersCounter = document.querySelector('#goodAnswersCounter');
+const goodAnswersCounterInGameOver = document.querySelector('#goodAnswersCounterInGameOver');
+const goodAnswers = document.querySelector('#goodAnswers');
+const badAnswers = document.querySelector('#badAnswers');
+const level = document.querySelector('#level');
+const liveHeart = document.querySelector('#liveHeart');
+const gameOver = document.querySelector('#gameOver');
+const startGame = document.querySelector('#startGame');
 const levelUp = document.querySelector('#levelUp');
-
-const timerBox = document.querySelector('#timerBox')
+const timerBox = document.querySelector('#timerBox');
+const counterBox = document.querySelector('#counterBox');
+const answersBox = document.querySelector('#answersBox');
 
 let x, y, v
 let answers = 0;
@@ -39,6 +40,9 @@ const startNewGame = () => {
 const gameOverModal = () => {
   if (heart === 0) {
     timerBox.style.display = 'none';
+    counterBox.style.display = 'none';
+    answersBox.style.display = 'none';
+    tipButton.style.display = 'none';
     gameOver.classList.add('flex')
     game.classList.add('none')
 
@@ -82,6 +86,8 @@ const generateQuestion = () => {
   if (answers === 1) {
     timerBox.style.display = 'flex';
     timerBox.classList.add('displayDetails');
+    counterBox.style.display = 'flex';
+    counterBox.classList.add('displayDetailsAnswers');
 
     setInterval(function () {
       displayCounter();
@@ -104,7 +110,7 @@ const generateQuestion = () => {
       setTimeout(function () {
         numThree.innerHTML = '';
         isActive = false
-        tipButton.innerHTML = ":|"
+        tipButton.innerHTML = '<img src="./icons/sad.svg" alt="music settings" class="icon">'
         tipButton.classList.add('deactivate');
       }, 1000);
     }
@@ -122,7 +128,7 @@ const checkAnswers = () => {
     badAnswers.style.display = 'none';
     game.classList.add('good-shadow');
     inputValue.classList.add('good-border');
-    tipButton.innerHTML = "Tip";
+    tipButton.innerHTML = '<img src="./icons/bulb.svg" alt="tip" class="icon"></img>';
     tipButton.classList.remove('active', 'deactivate');
     answerGood_SFX.currentTime = 0;
     answerGood_SFX.play();

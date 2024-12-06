@@ -18,10 +18,10 @@ document.addEventListener('click', () => {
 themeMusic.addEventListener('click', () => {
     if (theme_Music.muted) {
         theme_Music.muted = false;
-        themeMusic.textContent = '🔊';
+        themeMusic.innerHTML = '<img src="./icons/musicOn.svg" alt="music settings" class="icon">';
     } else {
         theme_Music.muted = true;
-        themeMusic.textContent = '🔇';
+        themeMusic.innerHTML = '<img src="./icons/musicOff.svg" alt="music settings" class="icon">';
     }
 });
 
@@ -30,11 +30,11 @@ themeSFX.addEventListener('click', () => {
         gameOver_SFX.muted = false;
         answerGood_SFX.muted = false;
         answerBad_SFX.muted = false;
-        themeSFX.textContent = '🔊';
+        themeSFX.innerHTML = '<img src="./icons/sfxOn.svg" alt="sfx settings" class="icon">';
     } else {
         gameOver_SFX.muted = true;
         answerGood_SFX.muted = true;
         answerBad_SFX.muted = true;
-        themeSFX.textContent = '🔇';
+        themeSFX.innerHTML = '<img src="./icons/sfxOff.svg" alt="sfx settings" class="icon">';
     }
 });
