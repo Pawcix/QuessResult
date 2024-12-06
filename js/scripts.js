@@ -15,10 +15,14 @@ const gameOver = document.querySelector('#gameOver')
 const startGame = document.querySelector('#startGame')
 const levelUp = document.querySelector('#levelUp');
 
+const timerBox = document.querySelector('#timerBox')
+
 let x, y, v
-let answers = 9;
+let answers = 0;
 let heart = 3;
 let isActive = false;
+
+inputValue.focus();
 
 const showLevelUp = () => {
   levelUp.innerHTML = 'Level UP';
@@ -34,6 +38,7 @@ const startNewGame = () => {
 
 const gameOverModal = () => {
   if (heart === 0) {
+    timerBox.style.display = 'none';
     gameOver.classList.add('flex')
     game.classList.add('none')
 
@@ -75,6 +80,9 @@ const generateQuestion = () => {
   }
 
   if (answers === 1) {
+    timerBox.style.display = 'flex';
+    timerBox.classList.add('displayDetails');
+
     setInterval(function () {
       displayCounter();
     }, 1000)

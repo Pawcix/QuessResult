@@ -17,6 +17,10 @@
 </head>
 
 <body>
+    <header>
+        <h1>Quess Result</h1>
+    </header>
+
     <section id="game">
         <div class="info">
             <span id="level"></span>
@@ -33,11 +37,11 @@
         </div>
 
         <div class="counter">
-            <div id="goodAnswersCounter"></div>
+            <div id="goodAnswersCounter">Ansers</div>
         </div>
 
         <div class="check">
-            <input id="inputValue" type="text">
+            <input id="inputValue" type="text" >
             <button id="checkButton">Check</button>
         </div>
     </section>
@@ -49,6 +53,10 @@
             <button id="startGame">Try Again</button>
         </div>
     </section>
+
+    <div id='timerBox'  class="timerBox">
+        <h2 id="timer" class="timer">timer</h2>
+    </div>
 
     <div class="tip">
         <button id="tipButton">Tip</button>
