@@ -1,7 +1,9 @@
-Data: 29.11.2024
-Number: #1 
--
-Game Name: Guess Result
-Description: Simple game to guest a number. Very fun for everyone to teach a math
--
-Author: Paweł Szatanik
+# Guess Result
+**Start Project:** 29.11.2024  
+**End Project:** 06.12.2024  
+
+## About the Game
+**Guess Result** is a simple and fun game where players guess numbers. It's designed to be both entertaining and educational, helping players improve their math skills in an enjoyable way.
+
+## Author
+**Paweł Szatanik**

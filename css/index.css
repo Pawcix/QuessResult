@@ -17,7 +17,7 @@ body {
 
 h1 {
   font-size: 80px;
-  color: white;
+  color: #ffffff;
   text-shadow: 2px 2px 10px rgb(0, 0, 0);
 }
 
@@ -33,28 +33,39 @@ header {
   z-index: 1;
 }
 
-button {
-  height: 100%;
-  padding: 15px;
-  border-radius: 15px;
-  background-color: #fff;
-  cursor: pointer;
+footer {
+  position: absolute;
+  width: 100%;
+  padding: 10px;
+  bottom: 0px;
+  text-align: center;
+  background: #ffffff;
+  background: linear-gradient(0deg, #ffffff 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 1;
 }
 
-section {
+#gameOver {
+  display: none;
+}
+
+.gameBox,
+.gameOverBox {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   min-width: 700px;
   padding: 25px;
-  color: #333;
   font-size: 50px;
+  color: #333;
   border-radius: 20px;
   animation: displayMainBox 3s forwards ease-in-out;
   z-index: 2;
 }
-section div {
+.gameBox .info,
+.gameBox .numbers,
+.gameOverBox .info,
+.gameOverBox .numbers {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,51 +73,86 @@ section div {
   width: 100%;
   padding: 10px;
 }
-section .info {
+.gameBox .info,
+.gameOverBox .info {
   justify-content: space-between;
 }
-section .info span {
-  font-weight: bold;
+.gameBox .info :nth-child(2),
+.gameOverBox .info :nth-child(2) {
+  color: #ff3b43;
 }
-section .info :nth-child(1) {
-  color: blue;
-}
-section .info :nth-child(2) {
-  color: red;
-}
-section .numbers {
-  justify-content: center;
-  gap: 15px;
-}
-section .numbers span {
-  font-size: 75px;
-}
-section .check {
-  justify-content: center;
+.gameBox .numbers,
+.gameOverBox .numbers {
+  justify-content: flex-end;
+  font-size: 80px;
   gap: 20px;
 }
-section .check :nth-child(1) {
-  width: 100%;
-  height: 100%;
-  padding: 15px;
-  font-size: 30px;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 120, 212, 0.2);
+.gameBox .numbers .check,
+.gameOverBox .numbers .check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
-section .gameOver {
-  color: black;
-  flex-direction: column;
-}
-
-footer {
-  position: absolute;
-  width: 100%;
-  bottom: 0px;
-  padding: 10px;
+.gameBox .numbers .check :nth-child(1),
+.gameOverBox .numbers .check :nth-child(1) {
   text-align: center;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(0, 0, 0, 0) 100%);
-  z-index: 1;
+  width: 200px;
+  height: 100px;
+  font-size: 80px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+.gameBox .numbers .check :nth-child(1):focus,
+.gameOverBox .numbers .check :nth-child(1):focus {
+  outline: none;
+  box-shadow: none;
+}
+.gameBox .numbers .check :nth-child(1).good-border,
+.gameOverBox .numbers .check :nth-child(1).good-border {
+  outline: 5px solid #3eba43;
+  background-color: rgba(62, 186, 67, 0.5);
+  animation: pulse 1s 2 forwards;
+}
+.gameBox .numbers .check :nth-child(1).bad-border,
+.gameOverBox .numbers .check :nth-child(1).bad-border {
+  outline: 5px solid #ff3b43;
+  background-color: rgba(255, 59, 67, 0.5);
+  animation: pulse 1s 2 forwards;
+}
+.gameBox.gameOverBox,
+.gameOverBox.gameOverBox {
+  gap: 20px;
+}
+.gameBox .gameOverBoxButton,
+.gameOverBox .gameOverBoxButton {
+  padding: 15px 30px;
+  border: none;
+  font-size: 30px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.gameBox .gameOverBoxButton:hover,
+.gameOverBox .gameOverBoxButton:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.gameBox.good-shadow, .gameBox.bad-shadow,
+.gameOverBox.good-shadow,
+.gameOverBox.bad-shadow {
+  transition: all 0.2s;
+}
+.gameBox.good-shadow,
+.gameOverBox.good-shadow {
+  box-shadow: 0px 0px 75px #3eba43 !important;
+}
+.gameBox.bad-shadow,
+.gameOverBox.bad-shadow {
+  box-shadow: 0px 0px 75px #ff3b43 !important;
 }
 
 .tip,
@@ -114,8 +160,8 @@ footer {
 .themeSFX {
   position: absolute;
   top: 20px;
-  transform: translateY(-150px);
   animation: tipHide 1s 3s forwards ease-out;
+  transform: translateY(-150px);
   z-index: 1;
 }
 .tip .iconButton,
@@ -124,14 +170,34 @@ footer {
   width: 70px;
   height: 73px;
   font-weight: bold;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
   border: none;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
   transition: all 0.2s;
+  cursor: pointer;
 }
 .tip .iconButton:hover,
 .music .iconButton:hover,
 .themeSFX .iconButton:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+.tip .iconButton.active,
+.music .iconButton.active,
+.themeSFX .iconButton.active {
+  font-size: 33px;
+  color: #3eba43;
+  background-color: rgba(0, 255, 0, 0.2) !important;
+}
+.tip .iconButton.deactivate,
+.music .iconButton.deactivate,
+.themeSFX .iconButton.deactivate {
+  background-color: rgba(255, 99, 71, 0.2) !important;
+}
+.tip .iconButton.deactivate img,
+.music .iconButton.deactivate img,
+.themeSFX .iconButton.deactivate img {
+  filter: brightness(0) saturate(100%) invert(41%) sepia(80%) saturate(1273%) hue-rotate(334deg) brightness(113%) contrast(110%);
 }
 .tip .iconButton .icon,
 .music .iconButton .icon,
@@ -140,16 +206,19 @@ footer {
   height: 40px;
   box-shadow: none;
 }
-
-.tip {
+.tip.tip,
+.music.tip,
+.themeSFX.tip {
   right: 20px;
 }
-
-.music {
+.tip.music,
+.music.music,
+.themeSFX.music {
   left: 20px;
 }
-
-.themeSFX {
+.tip.themeSFX,
+.music.themeSFX,
+.themeSFX.themeSFX {
   left: 105px;
 }
 
@@ -163,25 +232,25 @@ footer {
   top: 50%;
   left: 50%;
   background-color: #ffffff;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2509803922);
   z-index: 1;
 }
-
-.timerBox {
+.timerBox.timerBox,
+.counterBox.timerBox {
   width: 200px;
   border-radius: 20px 0px 0px 20px;
 }
-
-.counterBox {
+.timerBox.counterBox,
+.counterBox.counterBox {
   width: 300px;
   border-radius: 0px 20px 20px 0px;
 }
-
-.displayDetails {
+.timerBox.displayDetails,
+.counterBox.displayDetails {
   animation: displayDetailsTime 2s ease-in-out forwards;
 }
-
-.displayDetailsAnswers {
+.timerBox.displayDetailsAnswers,
+.counterBox.displayDetailsAnswers {
   animation: displayDetailsAnswers 2s ease-in-out forwards;
 }
 
@@ -202,29 +271,24 @@ footer {
   animation: fadeIn 0.5s ease;
 }
 .answersBox :nth-child(1) {
-  color: lime;
+  color: #3eba43;
 }
 .answersBox :nth-child(2) {
-  color: tomato;
+  color: #ff3b43;
 }
 
-#gameOver {
-  display: none;
-}
-
-#particles-js {
-  position: absolute;
-  background-color: rgb(255, 255, 255);
-  width: 100%;
-  height: 100vh;
-}
-
-#levelUp {
+.levelUp {
   position: absolute;
   font-size: 400px;
   animation: colorRotate 0.5s linear infinite, pulse 2s linear infinite;
   transition: all 1s;
-  z-index: 2;
+  z-index: 3;
+}
+
+.particlesJs {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
 }
 
 .flex {
@@ -233,43 +297,6 @@ footer {
 
 .none {
   display: none !important;
-}
-
-.good-border {
-  outline: 10px solid lime;
-  animation: pulse 1s 2 forwards;
-  transition: all 0.2s;
-}
-
-.bad-border {
-  outline: 10px solid red;
-  animation: pulse 1s 2 forwards;
-  transition: all 0.2s;
-}
-
-.good-shadow {
-  box-shadow: 0px 0px 75px lime !important;
-  transition: all 0.2s;
-}
-
-.bad-shadow {
-  box-shadow: 0px 0px 75px tomato !important;
-  transition: all 0.2s;
-}
-
-.active {
-  font-size: 33px;
-  color: lime;
-  background-color: rgba(0, 255, 0, 0.2);
-  border: 5px solid lime;
-}
-
-.deactivate {
-  background-color: rgba(255, 99, 71, 0.2);
-  border: 5px solid tomato;
-}
-.deactivate img {
-  filter: brightness(0) saturate(100%) invert(41%) sepia(80%) saturate(1273%) hue-rotate(334deg) brightness(113%) contrast(110%);
 }
 
 @keyframes tipHide {

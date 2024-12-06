@@ -3,7 +3,6 @@ const numOne = document.querySelector('#numOne');
 const numTwo = document.querySelector('#numTwo');
 const numThree = document.querySelector('#numThree');
 const inputValue = document.querySelector('#inputValue');
-const checkButton = document.querySelector('#checkButton');
 const tipButton = document.querySelector('#tipButton');
 const goodAnswersCounter = document.querySelector('#goodAnswersCounter');
 const goodAnswersCounterInGameOver = document.querySelector('#goodAnswersCounterInGameOver');
@@ -52,11 +51,10 @@ const gameOverModal = () => {
 
 const generateQuestion = () => {
   if (answers <= 10) {
-    x = Math.floor(Math.random() * 11);
-    y = Math.floor(Math.random() * 11);
+    x = Math.floor(Math.random() * 11) + 1;
+    y = Math.floor(Math.random() * 11) + 1;
     level.innerHTML = '🐳 Level: 1';
     level.style.color = 'blue';
-
   } else if (answers <= 20) {
     x = Math.floor(Math.random() * 16) + 5;
     y = Math.floor(Math.random() * 16) + 5;
@@ -103,14 +101,15 @@ const generateQuestion = () => {
 
   tipButton.addEventListener('click', function () {
     if (v) {
-      isActive = true
+      isActive = true;
       tipButton.innerHTML = v;
       tipButton.classList.add('active');
 
       setTimeout(function () {
+        isActive = false;
         numThree.innerHTML = '';
-        isActive = false
-        tipButton.innerHTML = '<img src="./icons/sad.svg" alt="music settings" class="icon">'
+        tipButton.innerHTML = '<img src="./icons/sad.svg" alt="music settings" class="icon">';
+        tipButton.classList.remove('active');
         tipButton.classList.add('deactivate');
       }, 1000);
     }
@@ -167,5 +166,4 @@ const checkEnter = (event) => {
 
 generateQuestion();
 startGame.addEventListener('click', startNewGame);
-checkButton.addEventListener('click', checkAnswers);
 inputValue.addEventListener('keypress', checkEnter);

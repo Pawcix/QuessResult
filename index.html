@@ -19,30 +19,43 @@
 <body>
     <header>
         <h1>Quess Result</h1>
+
+        <div class="tip">
+            <button id="tipButton" class="iconButton"><img src="./icons/bulb.svg" alt="tip" class="icon"></button>
+            <span id="numThree"></span>
+        </div>
+
+        <div class="music">
+            <button id="themeMusic" class="iconButton"><img src="./icons/musicOn.svg" alt="music settings"
+                    class="icon"></button>
+        </div>
+
+        <div class="themeSFX">
+            <button id="themeSFX" class="iconButton"><img src="./icons/sfxOn.svg" alt="sfx settings"
+                    class="icon"></button>
+        </div>
     </header>
 
-    <section id="game">
+    <span id="levelUp" class="levelUp"></span>
+
+    <section id="game" class="gameBox">
         <div class="info">
-            <span id="level"></span>
-            <span id="liveHeart"></span>
+            <h3 id="level"></h3>
+            <h3 id="liveHeart"></h3>
         </div>
 
         <div class="numbers">
-            <span id="numOne"></span> + <span id="numTwo"></span>
-        </div>
-
-        <div class="check">
-            <input id="inputValue" type="text">
-            <button id="checkButton">Check</button>
+            <h3 id="numOne"></h3> + <h3 id="numTwo"></h3> =
+            <div class="check">
+                <input id="inputValue" type="text">
+            </div>
         </div>
     </section>
 
-    <section id="gameOver">
-        <div class="gameOver">
-            <h2>Game Over :C</h2>
-            <p id="goodAnswersCounterInGameOver"></p>
-            <button id="startGame">Try Again</button>
-        </div>
+    <section id="gameOver" class="gameOverBox">
+        <h2>Game Over</h2>
+        <p id="goodAnswersCounterInGameOver"></p>
+        <button id="startGame" class="gameOverBoxButton">Try Again</button>
     </section>
 
     <div id="answersBox" class="answersBox">
@@ -51,33 +64,18 @@
     </div>
 
     <div id="timerBox" class="timerBox">
-        <h2 id="timer" class="timer">timer</h2>
+        <h2 id="timer"></h2>
     </div>
 
     <div id="counterBox" class="counterBox">
-        <h2 id="goodAnswersCounter">Ansers</h2>
+        <h2 id="goodAnswersCounter"></h2>
     </div>
-
-    <div class="tip">
-        <button id="tipButton" class="iconButton"><img src="./icons/bulb.svg"  alt="tip" class="icon"></button>
-        <span id="numThree"></span>
-    </div>
-
-    <div class="music">
-        <button id="themeMusic" class="iconButton"><img src="./icons/musicOn.svg" alt="music settings" class="icon"></button>
-    </div>
-
-    <div class="themeSFX">
-        <button id="themeSFX" class="iconButton"><img src="./icons/sfxOn.svg" alt="sfx settings" class="icon"></button>
-    </div>
-
-    <span id="levelUp"></span>
-
-    <div id="particles-js"></div>
 
     <footer>
         <p>Created by: Paweł Szatanik | &copy <span id="year"></span> | All right reserved.</p>
     </footer>
+
+    <div id="particles-js" class="particlesJs"></div>
 
     <script src="js/scripts.js"></script>
     <script src="js/audioManager.js"></script>

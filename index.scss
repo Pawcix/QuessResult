@@ -1,3 +1,6 @@
+$green: #3eba43;
+$red: #ff3b43;
+
 *,
 *::before,
 *::after {
@@ -17,7 +20,7 @@ body {
 
 h1 {
     font-size: 80px;
-    color: white;
+    color: #ffffff;
     text-shadow: 2px 2px 10px rgb(0, 0, 0);
 }
 
@@ -33,30 +36,37 @@ header {
     z-index: 1;
 }
 
-
-
-button {
-    height: 100%;
-    padding: 15px;
-    border-radius: 15px;
-    background-color: #fff;
-    cursor: pointer;
+footer {
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    bottom: 0px;
+    text-align: center;
+    background: #ffffff;
+    background: linear-gradient(0deg, #ffffff 0%, #00000000 100%);
+    z-index: 1;
 }
 
-section {
+#gameOver {
+    display: none;
+}
+
+.gameBox,
+.gameOverBox {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     min-width: 700px;
     padding: 25px;
-    color: #333;
     font-size: 50px;
+    color: #333;
     border-radius: 20px;
     animation: displayMainBox 3s forwards ease-in-out;
     z-index: 2;
 
-    div {
+    .info,
+    .numbers {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -68,59 +78,83 @@ section {
     .info {
         justify-content: space-between;
 
-        span {
-            font-weight: bold;
-        }
-
-        :nth-child(1) {
-            color: blue;
-        }
-
         :nth-child(2) {
-            color: red;
+            color: $red;
         }
     }
 
     .numbers {
-        justify-content: center;
-
-        gap: 15px;
-
-        span {
-            font-size: 75px;
-        }
-    }
-
-    .check {
-        justify-content: center;
+        justify-content: flex-end;
+        font-size: 80px;
         gap: 20px;
 
-        :nth-child(1) {
-            width: 100%;
-            height: 100%;
-            padding: 15px;
-            font-size: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 120, 212, 0.2);
+        .check {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+
+            :nth-child(1) {
+                text-align: center;
+                width: 200px;
+                height: 100px;
+                font-size: 80px;
+                border: none;
+                border-radius: 10px;
+                background-color: rgba(0, 0, 0, .1);
+                transition: all .2s;
+
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+
+                &.good-border {
+                    outline: 5px solid $green;
+                    background-color: rgba(62, 186, 67, .5);
+                    animation: pulse 1s 2 forwards;
+                }
+
+                &.bad-border {
+                    outline: 5px solid $red;
+                    background-color: rgba(255, 59, 67, .5);
+                    animation: pulse 1s 2 forwards;
+                }
+            }
         }
     }
 
-    .gameOver {
-        color: black;
-        flex-direction: column;
+    &.gameOverBox {
+        gap:20px;
     }
-}
 
+    .gameOverBoxButton {
+        padding: 15px 30px;
+        border: none;
+        font-size: 30px;
+        border-radius: 10px;
+        background-color: #ffffff;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, .8);
+        transition: all .2s;
+        cursor: pointer;
 
-footer {
-    position: absolute;
-    width: 100%;
-    bottom: 0px;
-    padding: 10px;
-    text-align: center;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 0) 100%);
-    z-index: 1;
+        &:hover {
+            background-color: rgba(0, 0, 0, .1);
+        }
+    }
+
+    &.good-shadow,
+    &.bad-shadow {
+        transition: all .2s;
+    }
+
+    &.good-shadow {
+        box-shadow: 0px 0px 75px $green !important;
+    }
+
+    &.bad-shadow {
+        box-shadow: 0px 0px 75px $red !important;
+    }
 }
 
 .tip,
@@ -128,20 +162,37 @@ footer {
 .themeSFX {
     position: absolute;
     top: 20px;
-    transform: translateY(-150px);
     animation: tipHide 1s 3s forwards ease-out;
+    transform: translateY(-150px);
     z-index: 1;
 
     .iconButton {
         width: 70px;
         height: 73px;
         font-weight: bold;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, .8);
         border: none;
+        border-radius: 15px;
+        background-color: #ffffff;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, .8);
         transition: all .2s;
+        cursor: pointer;
 
         &:hover {
             background-color: rgba(0, 0, 0, .1);
+        }
+
+        &.active {
+            font-size: 33px;
+            color: $green;
+            background-color: rgba(0, 255, 0, .2) !important;
+        }
+
+        &.deactivate {
+            background-color: rgba(255, 99, 71, .2) !important;
+
+            img {
+                filter: brightness(0) saturate(100%) invert(41%) sepia(80%) saturate(1273%) hue-rotate(334deg) brightness(113%) contrast(110%);
+            }
         }
 
         .icon {
@@ -150,18 +201,18 @@ footer {
             box-shadow: none;
         }
     }
-}
 
-.tip {
-    right: 20px;
-}
+    &.tip {
+        right: 20px;
+    }
 
-.music {
-    left: 20px;
-}
+    &.music {
+        left: 20px;
+    }
 
-.themeSFX {
-    left: 105px;
+    &.themeSFX {
+        left: 105px;
+    }
 }
 
 .timerBox,
@@ -174,26 +225,26 @@ footer {
     top: 50%;
     left: 50%;
     background-color: #ffffff;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 12px 25px #00000040;
     z-index: 1;
-}
 
-.timerBox {
-    width: 200px;
-    border-radius: 20px 0px 0px 20px;
-}
+    &.timerBox {
+        width: 200px;
+        border-radius: 20px 0px 0px 20px;
+    }
 
-.counterBox {
-    width: 300px;
-    border-radius: 0px 20px 20px 0px;
-}
+    &.counterBox {
+        width: 300px;
+        border-radius: 0px 20px 20px 0px;
+    }
 
-.displayDetails {
-    animation: displayDetailsTime 2s ease-in-out forwards;
-}
+    &.displayDetails {
+        animation: displayDetailsTime 2s ease-in-out forwards;
+    }
 
-.displayDetailsAnswers {
-    animation: displayDetailsAnswers 2s ease-in-out forwards;
+    &.displayDetailsAnswers {
+        animation: displayDetailsAnswers 2s ease-in-out forwards;
+    }
 }
 
 .answersBox {
@@ -214,38 +265,28 @@ footer {
     }
 
     :nth-child(1) {
-        color: lime;
+        color: $green;
     }
 
     :nth-child(2) {
-        color: tomato;
+        color: $red;
     }
 }
 
-
-
-
-
-
-
-#gameOver {
-    display: none;
-}
-
-#particles-js {
-    position: absolute;
-    background-color: rgb(255, 255, 255);
-    width: 100%;
-    height: 100vh;
-}
-
-#levelUp {
+.levelUp {
     position: absolute;
     font-size: 400px;
     animation: colorRotate 0.5s linear infinite, pulse 2s linear infinite;
     transition: all 1s;
-    z-index: 2;
+    z-index: 3;
 }
+
+.particlesJs {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+
 
 // Style for JS:
 .flex {
@@ -256,44 +297,8 @@ footer {
     display: none !important;
 }
 
-.good-border {
-    outline: 10px solid lime;
-    animation: pulse 1s 2 forwards;
-    transition: all .2s;
-}
 
-.bad-border {
-    outline: 10px solid red;
-    animation: pulse 1s 2 forwards;
-    transition: all .2s;
-}
-
-.good-shadow {
-    box-shadow: 0px 0px 75px lime !important;
-    transition: all .2s;
-}
-
-.bad-shadow {
-    box-shadow: 0px 0px 75px tomato !important;
-    transition: all .2s;
-}
-
-.active {
-    font-size: 33px;
-    color: lime;
-    background-color: rgba(0, 255, 0, .2);
-    border: 5px solid lime;
-}
-
-.deactivate {
-    background-color: rgba(255, 99, 71, .2);
-    border: 5px solid tomato;
-
-    img {
-        filter: brightness(0) saturate(100%) invert(41%) sepia(80%) saturate(1273%) hue-rotate(334deg) brightness(113%) contrast(110%);
-    }
-}
-
+// Animation:
 @keyframes tipHide {
     0% {
         transform: translateY(-100px);
