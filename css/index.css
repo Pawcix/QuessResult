@@ -44,10 +44,6 @@ footer {
   z-index: 1;
 }
 
-#gameOver {
-  display: none;
-}
-
 .gameBox,
 .gameOverBox {
   display: flex;
@@ -132,6 +128,7 @@ footer {
   border: none;
   font-size: 30px;
   border-radius: 10px;
+  font-family: inherit;
   background-color: #ffffff;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
   transition: all 0.2s;

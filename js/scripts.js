@@ -23,6 +23,7 @@ let heart = 3;
 let isActive = false;
 
 inputValue.focus();
+gameOver.style.display = 'none';
 
 const showLevelUp = () => {
   levelUp.innerHTML = 'Level UP';

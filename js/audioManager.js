@@ -10,7 +10,9 @@ theme_Music.loop = true;
 theme_Music.volume = 0.1;
 
 document.addEventListener('click', () => {
-    theme_Music.play()
+    theme_Music.play().catch(error => {
+        console.error('Error playing theme music:', error);
+    })
 });
 
 themeMusic.addEventListener('click', () => {
